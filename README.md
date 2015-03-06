@@ -1,11 +1,10 @@
-# Imap plugin for CakePHP
+CakePHP 3 IMAP Plugin
+=====================
 
-## Installation
+This plugin uses the [ddeboer/imap](https://github.com/ddeboer/imap) library to manage email data
 
-You can install this plugin into your CakePHP application using [composer](http://getcomposer.org).
+Requirements
+------------
 
-The recommended way to install composer packages is:
-
-```
-composer require your-name-here/Imap
-```
+- PHP 5.4 >
+- CakePHP 3
