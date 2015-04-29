@@ -3,8 +3,6 @@ namespace Imap\Controller\Component;
 
 use Cake\Controller\Component;
 use Cake\Controller\ComponentRegistry;
-use Cake\Event\Event;
-use Cake\Event\EventManagerTrait;
 use Ddeboer\Imap\Server;
 
 /**
@@ -12,7 +10,6 @@ use Ddeboer\Imap\Server;
  */
 class ImapComponent extends Component
 {
-    use EventManagerTrait;
 
     public $components = ['RequestHandler'];
 
@@ -25,52 +22,30 @@ class ImapComponent extends Component
         'configFile' => 'config'
     ];
 
+    protected $config;
+
     protected $server;
     protected $connection;
-
-    /**
-     * Request object
-     *
-     * @var \Cake\Network\Request
-     */
-    public $request;
-
-    /**
-     * Response object
-     *
-     * @var \Cake\Network\Response
-     */
-    public $response;
-
-    /**
-     * Instance of the Session object
-     *
-     * @return void
-     */
-    public $session;
 
     /**
      * @param array $config
      */
     public function initialize(array $config)
     {
-        $controller = $this->_registry->getController();
-        $this->eventManager($controller->eventManager());
-        $this->request = $controller->request;
-        $this->response = $controller->response;
-        $this->session = $controller->request->session();
+        $this->config = $config;
     }
 
     public function connect()
     {
-        $configFile = $configFile . '.php';
-        $configFilePath = ROOT . DS . 'config' . DS . 'permissions' . DS . $configFile;
-        $config = require $configFilePath;
+        $configFile = $this->config['configFile'];
 
-        $this->server = new Server($config['server']);
+        $credentialsFile = $configFile . '.php';
+        $credentialsFilePath = ROOT . DS . 'config' . DS . 'imap' . DS . $credentialsFile;
+        $credentials = require $credentialsFilePath;
 
         // $connection is instance of \Ddeboer\Imap\Connection
-        $this->connection = $this->server->authenticate($config['email'], $config['password']);
+        $this->server = new Server($credentials['server'], 993, '/imap/no-validate-cert');
+        $this->connection = $this->server->authenticate($credentials['email'], $credentials['password']);
     }
 
 }
