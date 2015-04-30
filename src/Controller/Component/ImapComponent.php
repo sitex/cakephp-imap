@@ -24,9 +24,6 @@ class ImapComponent extends Component
 
     protected $config;
 
-    protected $server;
-    protected $connection;
-
     /**
      * @param array $config
      */
@@ -35,6 +32,9 @@ class ImapComponent extends Component
         $this->config = $config;
     }
 
+    /**
+     * @return \Ddeboer\Imap\Connection
+     */
     public function connect()
     {
         $configFile = $this->config['configFile'];
@@ -44,8 +44,12 @@ class ImapComponent extends Component
         $credentials = require $credentialsFilePath;
 
         // $connection is instance of \Ddeboer\Imap\Connection
-        $this->server = new Server($credentials['server'], 993, '/imap/no-validate-cert');
-        $this->connection = $this->server->authenticate($credentials['email'], $credentials['password']);
+        $server = new Server(
+            $credentials['server'],
+            993,
+            '/imap/ssl/novalidate-cert'
+        );
+        return $server->authenticate($credentials['email'], $credentials['password']);
     }
 
 }
