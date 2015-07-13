@@ -18,9 +18,9 @@
     "source": "https://github.com/andtxr/imap"
   },
   "require": {
-    "php": ">=5.4",
+    "php": ">=5.4.16",
     "cakephp/plugin-installer": "*",
-    "cakephp/cakephp": "3.0.x-dev",
+    "cakephp/cakephp": "~3.1",
     "ddeboer/imap": "dev-master"
   },
   "require-dev": {
