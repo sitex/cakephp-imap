@@ -14,8 +14,8 @@
     }
   ],
   "support": {
-    "issues": "https://github.com/andtxr/imap/issues",
-    "source": "https://github.com/andtxr/imap"
+    "issues": "https://github.com/andtxr/cakephp-imap/issues",
+    "source": "https://github.com/andtxr/cakephp-imap"
   },
   "require": {
     "php": ">=5.4.16",
