@@ -1,6 +1,6 @@
 {
   "name": "andtxr/cakephp-imap",
-  "description": "Imap connection plugin",
+  "description": "A plugin to wrap ddeboer/imap",
   "type": "cakephp-plugin",
   "keywords": ["cakephp", "imap", "recovery", "plugin"],
   "homepage": "https://github.com/andtxr/imap",
