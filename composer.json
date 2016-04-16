@@ -1,9 +1,9 @@
 {
-  "name": "andtxr/cakephp-imap",
+  "name": "sitex/cakephp-imap",
   "description": "A plugin to wrap ddeboer/imap",
   "type": "cakephp-plugin",
   "keywords": ["cakephp", "imap", "recovery", "plugin"],
-  "homepage": "https://github.com/andtxr/imap",
+  "homepage": "https://github.com/sitex/cakephp-imap",
   "license": "MIT",
   "authors": [
     {
@@ -17,11 +17,21 @@
     "issues": "https://github.com/andtxr/cakephp-imap/issues",
     "source": "https://github.com/andtxr/cakephp-imap"
   },
+  "repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/sitex/imap"
+    },
+    {
+        "type": "vcs",
+        "url": "https://github.com/sitex/cakephp-imap"
+    }
+  ],
   "require": {
     "php": ">=5.4.16",
     "cakephp/plugin-installer": "*",
     "cakephp/cakephp": "~3.1",
-    "ddeboer/imap": "dev-master"
+    "sitex/imap": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "*"
