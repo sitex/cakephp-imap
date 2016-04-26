@@ -46,8 +46,8 @@ class ImapComponent extends Component
         // $connection is instance of \Ddeboer\Imap\Connection
         $server = new Server(
             $credentials['server'],
-            993,
-            '/imap/ssl/novalidate-cert'
+            143, //993,
+            '/imap' //'/imap/ssl/novalidate-cert'
         );
         return $server->authenticate($credentials['email'], $credentials['password']);
     }
